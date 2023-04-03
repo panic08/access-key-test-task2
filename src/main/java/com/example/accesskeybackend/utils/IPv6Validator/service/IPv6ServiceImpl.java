@@ -7,7 +7,8 @@ import java.net.UnknownHostException;
 
 
 @Service
-public class IPv6Service {
+public class IPv6ServiceImpl implements IPv6Service{
+    @Override
     public boolean validate(String URL) {
         String domain = URL.toLowerCase().replaceAll("^https?://", "");
         try {
