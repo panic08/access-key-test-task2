@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.net.UnknownHostException;
 
-@Controller
+@RestController
 @RequestMapping("/api/web")
 public class IPv6ValidatorController {
 
@@ -19,10 +21,10 @@ public class IPv6ValidatorController {
 
     IPv6Service iPv6Service;
     @GetMapping("/checkIpv6Support")
-    public ResponseEntity<IPv6DTO> ipv6Validator(@RequestParam String siteUrl) throws UnknownHostException {
+    public IPv6DTO ipv6Validator(@RequestParam String siteUrl) throws UnknownHostException {
         IPv6DTO iPv6DTO = new IPv6DTO();
         iPv6DTO.setURL(siteUrl);
         iPv6DTO.setSuccessful(iPv6Service.validate(siteUrl));
-        return ResponseEntity.ok().body(iPv6DTO);
+        return iPv6DTO;
     }
 }
