@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/web")
 public class IPv6ValidatorController {
 
+
     public IPv6ValidatorController(IPv6Service iPv6Service) {
         this.iPv6Service = iPv6Service;
     }
+
 
     IPv6Service iPv6Service;
     @GetMapping("/checkIpv6Support")
